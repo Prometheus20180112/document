@@ -1,0 +1,21 @@
+create database if not exists  mydatabase；  创建数据库
+
+
+CREATE TABLE IF NOT EXISTS `monster_hh`(
+`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+`guid`INT UNSIGNED,
+`username` VARCHAR(20) NOT NULL,
+`passwdv` VARCHAR(20) NOT NULL,
+`length`INT(20) NOT NULL,
+`eat` BOOL 
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+

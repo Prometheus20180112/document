@@ -1,0 +1,5 @@
+https://blog.csdn.net/nixonwuying/article/details/88547396
+1/打开安装后的postman
+2/创建Collection，在Collections里添加一个新的采集目录test
+3/点击右上方的按钮Capture API requests with postman，设置代理，端口号Port设为5555，Target目标文件设为Collection: test
+4/打开chrome浏览器，设置代理：系统->打开代理设置->连接->局域网设置。

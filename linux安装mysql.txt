@@ -1,0 +1,58 @@
+参考文档：https://blog.csdn.net/qq_37598011/article/details/93489404
+
+1/下载tar包 ：
+https://dev.mysql.com/
+2/解压tar包：
+tar -xvf mysql-5.7.26-linux-glibc2.12-x86_64.tar 
+3/移动并重命名
+mv mysql-5.7.26-linux-glibc2.12-x86_64 /usr/local/mysql
+4/创建用户组和用户并修改权限
+groupadd mysql
+useradd -r -g mysql mysql
+5/创建目录并赋予权限
+mkdir -p  /data/mysql  
+chown mysql:mysql -R /data/mysql
+6/修改配置文件
+vim /etc/my.cnf
+
+[mysqld]
+bind-address=0.0.0.0
+port=3306
+user=mysql
+basedir=/usr/local/mysql
+datadir=/data/mysql
+socket=/tmp/mysql.sock
+log-error=/data/mysql/mysql.err
+pid-file=/data/mysql/mysql.pid
+#character config
+character_set_server=utf8mb4
+symbolic-links=0
+explicit_defaults_for_timestamp=true
+
+7/初始化数据库
+cd /usr/local/mysql/bin/  进入bin目录
+./mysqld --defaults-file=/etc/my.cnf --basedir=/usr/local/mysql/ --datadir=/data/mysql/ --user=mysql --initialize
+cat /data/mysql/mysql.err  查看密码
+
+8/启动mysql
+启动mysql，并更改root 密码
+cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql           mysql.server放置到/etc/init.d/mysql中
+service mysql start        启动
+ps -ef|grep mysql  查看安装应用
+
+9/更改密码
+./mysql -u root -p   #bin目录下
+
+SET PASSWORD = PASSWORD('123456');
+ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+FLUSH PRIVILEGES;                         
+
+这里主要执行下面三个命令(先登录数据库)        
+use mysql                                            #访问mysql库
+update user set host = '%' where user = 'root';      #使root能再任何host访问
+FLUSH PRIVILEGES;                                    #刷新
+
+
+如果不希望每次都到bin目录下使用mysql命令则执行以下命令
+ln -s  /usr/local/mysql/bin/mysql    /usr/bin
+

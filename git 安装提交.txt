@@ -1,0 +1,22 @@
+1/下载地址 https://git-scm.com/download/win
+
+2/到指定文件夹 cd /c/Users/admin/Desktop/document    # pwd 可以显示当前路径
+$cd /c/Users/admin/Desktop/document
+
+3/通过命令git init把这个文件夹变成Git可管理的仓库
+$git init
+
+4/把当前文件夹下所有文件添加进去  这时候你就可以把你的项目粘贴到这个本地Git仓库里面（粘贴后你可以通过git status来查看你当前的状态），然后通过git add把项目添加到仓库（或git add .把该目录下的所有文件添加到仓库，注意点是用空格隔开的）。在这个过程中你其实可以一直使用git status来查看你当前的状态
+$git add .  
+
+
+5/当遇到github 打不开的时候
+登录     http://github.com.ipaddress.com  获取ip地址  （140.82.112.4）
+            https://fastly.net.ipaddress.com/github.global.ssl.fastly.net  （199.232.69.194）
+
+添加如下设置到hosts文件：
+140.82.112.4     github.com
+199.232.69.194    github.global.ssl.fastly.net
+
+刷新DNS缓存   ，CMD里面执行
+ipconfig /flushdns

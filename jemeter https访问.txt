@@ -1,0 +1,15 @@
+https://www.cnblogs.com/kongjiangbing/p/11354113.html
+
+方式1 亲测可以
+
+1/将证书转换成.store格式的文件，进入到存放证书的路径下，CMD输入命令：keytool -import -alias "jm.store" -file "D:\d.cer" -keystore jm.store
+
+如果报错就在java bin目录下执行  最后生成的文件在当前目录下
+
+方式2 暂时未用
+
+
+
+
+
+

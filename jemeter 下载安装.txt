@@ -1,0 +1,10 @@
+地址：http://jmeter.apache.org/download_jmeter.cgi
+下载二进制即可
+
+配置环境变量
+电脑桌面-—>“计算机”图标—>鼠标右键选择“属性”—>点击高级系统设置—>高级—>环境变量—>系统变量，创建JMETER_HOME，值是解压的JMeter安装路径（我本地是D:\apache-jmeter-4.0）JMETER_HOME:.....
+
+ 如果没有classpath，则新建，则添加%JMETER_HOME%\lib\ext\ApacheJMeter_core.jar;%JMETER_HOME%\lib\jorphan.jar;%JMETER_HOME%\lib/logkit-2.0.jar;
+
+如已经有，则追加;%JMETER_HOME%\lib\ext\ApacheJMeter_core.jar;%JMETER_HOME%\lib\jorphan.jar;%JMETER_HOME%\lib/logkit-2.0.jar;
+

@@ -1,0 +1,7 @@
+https://blog.csdn.net/qq_33703550/article/details/79230577
+
+1/win+R   到  C:\Windows\System32\drivers\etc
+2/进入hosts的文件所在目录，点击‘’文件‘’按钮
+3/点击Windows PowerShell ，在点击以管理员身份打开
+4、弹出一个窗口，输入 cmd 并回车，就进入了管理员界面。输入命令行：notepad hosts 并回车
+5、打开了hosts，然后就可以执行复制粘贴等编辑操作了

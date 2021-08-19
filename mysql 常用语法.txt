@@ -1,0 +1,2 @@
+SELECT * FROM et_metadatacustom WHERE ISNULL(FIELDID);  查询某个字段为空
+SELECT * FROM et_metadatacustom WHERE FIELDID IS NULL; 等价于上面的字段

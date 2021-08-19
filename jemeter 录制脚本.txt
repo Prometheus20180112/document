@@ -1,0 +1,15 @@
+https://blog.csdn.net/nixonwuying/article/details/88547396
+
+1.运行jmeter
+
+2.测试计划中添加HTTP代理服务器
+
+3.添加线程组
+
+4.配置HTTP代理服务器，类似下图：
+
+5.IE中配置代理
+
+6.添加HTTP Cookie管理器与查看结果树
+
+7.执行HTTP代理服务器启动

@@ -1,0 +1,91 @@
+linux 安装docker 
+
+步骤1：
+$ ls -l /sys/class/misc/device-mapper
+
+'''
+lrwxrwxrwx 1 root root 0 May  1 20:55 /sys/class/misc/device-mapper -> ../../devices/virtual/misc/device-mapper
+'''
+备注：
+Docker默认使用AUFS作为存储驱动，但是AUFS并没有被包括在Linux的主线内核中。CentOS中可以使用Device Mapper作为存储驱动，这是在2.6.9内核版本引入的新功能。我们需要先确认是否启用该功能:
+如果没有检测到Device Mapper，需要安装device-mapper软件包:
+$ sudo yum install -y device-mapper 
+然后重新加载dm_mod内核模块:
+$ sudo modprobe dm_mod 
+'''
+
+步骤2： CentOS7能上外网
+yum -y install gcc                                       #gcc -v查看是否已安装gcc 或者  gcc -version 
+
+'''
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.lzu.edu.cn
+ * extras: mirror.lzu.edu.cn
+ * updates: mirror.lzu.edu.cn
+base                                                                                                                                                              
+docker-ce-stable                                                                                                                                                  
+extras                                                                                                                                                                
+google-chrome                                                                                                                                                   
+updates                                                                                                                                                              
+google-chrome/primary                                                                                                                                         
+google-chrome                                                                                                                                                      
+Package gcc-4.8.5-44.el7.x86_64 already installed and latest version
+Nothing to do
+'''
+步骤3： CentOS7能上外网
+yum -y install gcc-c++		  
+'''
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.lzu.edu.cn
+ * extras: mirror.lzu.edu.cn
+ * updates: mirror.lzu.edu.cn
+Package gcc-c++-4.8.5-44.el7.x86_64 already installed and latest version
+Nothing to do
+'''
+
+步骤4：
+yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-selinux \ docker-engine-selinux \ docker-engine
+'''
+Loaded plugins: fastestmirror, langpacks
+No Match for argument: docker
+No Match for argument:  docker-client
+No Match for argument:  docker-client-latest
+No Match for argument:  docker-common
+No Match for argument:  docker-latest
+No Match for argument:  docker-latest-logrotate
+No Match for argument:  docker-logrotate
+No Match for argument:  docker-selinux
+No Match for argument:  docker-engine-selinux
+No Match for argument:  docker-engine
+No Packages marked for removal
+
+'''
+备注：如果 yum 报告未安装任何这些软件包，这表示情况正常
+
+步骤5：安装依赖包
+yum install -y yum-utils device-mapper-persistent-data lvm2
+
+步骤6：设置stable镜像仓库
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+或
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+步骤7：
+yum makecache fast
+'''
+如果这是自添加 Docker 镜像仓库以来您首次刷新软件包索引，系统将提示您接受 GPG 密钥，并且将显示此密钥的指纹。验证指纹是否正确，并且在正确的情况下接受此密钥。指纹应匹配 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35。
+'''
+步骤8：#从高到低列出Docker-ce的版本
+yum list docker-ce.x86_64  --showduplicates | sort -r 
+
+步骤9：
+yum install docker-ce-18.09.9 docker-ce-cli-18.09.9 containerd.io
+
+#安装命令格式：docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
+#安装最新版本的docker    yum -y install docker-ce
+
+步骤10：启动docker
+systemctl start docker
+
